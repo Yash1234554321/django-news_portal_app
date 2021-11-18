@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %} profile {% endblock title %}
+
+{% block content %}
+
+    <div class="container">
+        <div style="margin: auto; margin-top: 20px;  width: 500px;" class='jumbotron'>
+            <div class="list-group">
+                <button type="button" class="list-group-item list-group-item-action active">
+                  My Profile
+                </button>
+                <button type="button" class="list-group-item list-group-item-action">{{user_info.first_name}} {{user.last_name}}</button>
+                <button type="button" class="list-group-item list-group-item-action">{{user_info.email}}</button>
+                <button type="button" class="list-group-item list-group-item-action">{{user_info.username}}</button>
+                <a href="{% url 'reset_password' %}" class="list-group-item list-group-item-action">Click here to reset password</a>
+              </div>    
+        
+        </div>
+    </div>
+{% endblock content %}

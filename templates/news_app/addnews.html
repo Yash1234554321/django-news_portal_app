@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}
+  Add News Page
+{% endblock %}
+
+{% block content %}
+        <div style="margin: auto; margin-top: 15px;  width: 500px; height: 400px;" class='jumbotron'>
+        <h2 style="margin-top:-50px;">Add News</h2>
+        <hr style="background-color:black;">
+  <form method="POST">
+  {% csrf_token %}
+  <div class="form-group">
+    <label for="title">Title</label>
+    <input type="text" name="title" class="form-control" id="title" placeholder="Enter title">
+  </div>
+  <div class="form-group">
+    <label for="content">Content</label>
+    <textarea class="form-control" name="content" id="content" placeholder="Enter content"></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary">Add News</button>
+</form>
+  </div>
+
+{% endblock %}

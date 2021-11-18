@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block content %}
+<div class="jumbotron" style="background-color:white; height:1100;">
+    <h1 class="text-center" style="margin-top:-50px;color:black;">News</h1>
+    <hr style="background-color:black;">
+    <div class="container" style="height:100%;">
+    {% if news %}
+        {% for item in news %}
+            <h4 style="color:black;">Title: {{item.title}}<br></h4>
+            <p style="color:black;">{{item.content}}<br></p>
+            {% if item.author.id == current_user.id or current_user.is_superuser %}
+                <a href ="{% url "update_news" item.id %}"  class="btn btn-secondary" style="color:white;">Edit</a> 
+                <a href ="{% url "delete_news" item.id %}"  class="btn btn-secondary" style="color:white;">Delete</a> <hr>
+            {% endif %}
+        {% endfor %}
+    {% else %}
+        <h2>There is no any news.</h2>
+    {% endif %}
+    {% if messages %}
+    {% for msg in messages %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+              <strong>{{msg}}</strong> 
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+    </div>
+    {% endfor %}
+    {% endif %}
+    <a href="{% url "add_news" %}" class="btn btn-primary">Add News</a><hr>
+    </div>
+    </div>
+{% endblock %}
